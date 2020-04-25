@@ -2,20 +2,39 @@
     <div class="main-container">
         <tea-room-res v-if="isSmallScreen"></tea-room-res>
         <tea-room v-else></tea-room>
+        <sns :links="links"></sns>
     </div>
 </template>
 
 <script>
 import teaRoom from '@/components/tearoom/teaRoom_redesign.vue'
 import teaRoomRes from '@/components/tearoom/teaRoom_responsive.vue'
+import sns from '@/components/tearoom/sns.vue'
 export default {
     components: {
         teaRoom,
-        teaRoomRes
+        teaRoomRes,
+        sns
     },
     computed: {
         isSmallScreen() {
             return window.innerWidth < 1200
+        }
+    },
+    data() {
+        return  {
+            links: [
+                {
+                    link: "https://twitter.com/H1gh_and_Dry",
+                    icon: "fa fa-twitter fa-1x",
+                    alt: "tweet me"
+                },
+                {
+                    link: "mailto:subdance@126.com",
+                    icon: "fa fa-envelope-open-o fa-1x",
+                    alt: "mail me"
+                }
+            ]
         }
     }
 

@@ -173,7 +173,7 @@ export default {
     }
     .main-container-inner {
         position: relative;
-        padding-top: 40px;
+        padding-top: 80px;
         max-width: 375px;
         display: flex;
         flex-flow: column nowrap;
