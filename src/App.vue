@@ -60,37 +60,11 @@ export default {
             },
         }
     }, 
-    created() {
-        // if (window.innerWidth < 1200) {
-        //     setTimeout(() => {
-        //         this.$message({
-        //             type: 'success',
-        //             message: '在大屏幕浏览可以获得完整体验',
-        //             showClose: true
-        //         });
-        //     }, 1000)
-        // }
-    },
 }
 </script>
 <style lang="scss" scoped>
-    .el-header {
-        background-color: rgba(156, 141, 141, 0.349);
-        position: relative;
-        z-index: 999;
-        padding: 0px;
-        backdrop-filter: blur(10px);
-    }
     .el-main {
         padding: 0px;
-        margin-top: -60px;
         position: relative;
-
-        &.mito {
-            margin-top: 0px;
-        }
-    }
-    .el-footer {
-        padding: 0px;
     }
 </style>
