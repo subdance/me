@@ -1,11 +1,5 @@
-# [konfan3.0](https://konfan.net/#/)
-## What's new
-* Now based on vue-cli 3.0.
-* Partialy re-constructed.
-* UI improving.
+# [antioxident](https://yuiyuan.xyz/#/)
 
-## What's next
-* Testing live2D and webGL.
 
 
 
