@@ -12,18 +12,18 @@
                 />
         </div>
 
-        <el-header :style="{'display': isMito ? 'none' : 'block'}">
+        <!-- <el-header :style="{'display': isMito ? 'none' : 'block'}">
             <navbar></navbar>
-        </el-header>
+        </el-header> -->
 
         <el-main :style="{'margin-top': isMito ? '0px' : '-60px'}">
             <router-view/>
             <to-top></to-top>
         </el-main>
 
-        <el-footer :style="{'display': isMito ? 'none' : 'block'}">
+        <!-- <el-footer :style="{'display': isMito ? 'none' : 'block'}">
             <footbar></footbar>
-        </el-footer>
+        </el-footer> -->
     </el-container>
 </template>
 
