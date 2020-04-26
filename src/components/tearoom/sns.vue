@@ -1,14 +1,21 @@
 <template>
     <div class="main-container-sns">
-
-        <a 
-            v-for="(item, index) in links"
-            :key="index"
-            :href="item.link" target="_blank"
-            >
-            <i :class="item.icon"></i>
-            {{item.alt}}
-        </a>
+            <a 
+                v-for="(item, index) in urlLinks"
+                :key="index+10"
+                :href="item.link" target="_blank"
+                >
+                <i :class="item.icon"></i>
+                {{item.alt}}
+            </a>
+            <router-link 
+                v-for="(item, index) in routerLinks"
+                :key="index"
+                :to="item.link"
+                >
+                <i :class="item.icon"></i>
+                <span class="router-text">{{item.alt}}</span>
+            </router-link>
     </div>
 </template>
 
@@ -27,6 +34,14 @@ export default {
         return {
         }
     },
+    computed: {
+        urlLinks() {
+            return this.links.filter(item => !item.isRouter);
+        },
+        routerLinks() {
+            return this.links.filter(item => item.isRouter);
+        }
+    }
 }
 </script>
 
@@ -54,6 +69,10 @@ export default {
                 transition: all 0.2s;
                 color: #343538;
             }
+        }
+
+        .router-text {
+            color: #b44b51;
         }
     }
 </style>

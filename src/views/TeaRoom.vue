@@ -14,7 +14,7 @@ export default {
     components: {
         teaRoom,
         teaRoomRes,
-        sns
+        sns,
     },
     computed: {
         isSmallScreen() {
@@ -27,12 +27,20 @@ export default {
                 {
                     link: "https://twitter.com/H1gh_and_Dry",
                     icon: "fa fa-twitter fa-1x",
-                    alt: "tweet me"
+                    alt: "tweet me",
+                    isRouter: false
                 },
                 {
                     link: "mailto:subdance@126.com",
-                    icon: "fa fa-envelope-open-o fa-1x",
-                    alt: "mail me"
+                    icon: "fa fa-envelope-open fa-1x",
+                    alt: "mail me",
+                    isRouter: false
+                },
+                {
+                    link: "/projects",
+                    icon: "fa fa-file fa-1x",
+                    alt: "my projects",
+                    isRouter: true
                 }
             ]
         }
