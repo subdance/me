@@ -32,6 +32,11 @@ export default {
                     thumbnail: "https://konfan.oss-cn-beijing.aliyuncs.com/assets/peco.png",
                     link: "https://yuiyuan.xyz/pcrrang-io"
                 },
+                {
+                    name: "Nhentai 收藏夹加载插件",
+                    thumbnail: "https://static.nhentai.net/img/logo.650c98bbb08e.svg",
+                    link: "https://github.com/subdance/nhentai-page-loader"
+                },
             ]
         }
     },
@@ -89,7 +94,10 @@ export default {
                 .name {
                     font-size: 16px;
                     color: white;
-                    font-family: 'ZCOOL XiaoWei', serif;
+                    color: #fcee0a;
+                    // font-family: 'ZCOOL XiaoWei', serif;
+                    font-family: 'ZCOOL QingKe HuangYou', cursive;
+                    letter-spacing: 2px;
                 }
             }
 
