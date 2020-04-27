@@ -58,8 +58,7 @@ export default {
         a {
             font-size: 12px;
             display: block;
-            color: #9a9da3;
-            font-style: italic;
+            color: black;
             transition: all 0.2s;
 
             &:not(:first-of-type) {
@@ -72,7 +71,7 @@ export default {
         }
 
         .router-text {
-            color: #b44b51;
+            color: #bd0b14;
         }
     }
 </style>
