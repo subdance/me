@@ -25,17 +25,22 @@ export default {
                 {
                     name: "K-ON轻音少女主题站",
                     thumbnail: "https://konfan.oss-cn-beijing.aliyuncs.com/assets/3.png",
-                    link: "https://yuiyuan.xyz/k-on"
+                    link: "https://konfan.net"
                 },
                 {
                     name: "PCR角色距离计算器",
                     thumbnail: "https://konfan.oss-cn-beijing.aliyuncs.com/assets/peco.png",
-                    link: "https://yuiyuan.xyz/pcrrang-io"
+                    link: "https://yuiyuan.xyz/pcrrange-io"
                 },
                 {
                     name: "Nhentai 收藏夹加载插件",
                     thumbnail: "https://static.nhentai.net/img/logo.650c98bbb08e.svg",
-                    link: "https://github.com/subdance/nhentai-page-loader"
+                    link: "https://greasyfork.org/zh-CN/scripts/402407-nhentai-favorites-page-loader"
+                },
+                {
+                    name: "PCR彩虹简介生成器",
+                    thumbnail: "https://konfan.oss-cn-beijing.aliyuncs.com/pcr/kitty.png",
+                    link: "https://yuiyuan.xyz/pcr-color/#/"
                 },
             ]
         }
@@ -75,9 +80,9 @@ export default {
                 flex-flow: row nowrap;
                 align-items: center;
                 justify-content: center;
-                transition: all 0.5s;
+                transition: all 0.1s;
                 &:hover {
-                    transition: all 0.5s;
+                    transition: all 0.1s;
                     clip-path: polygon(100% 0, 100% 37%, 100% 100%, 0 100%, 0 66%, 0 0);
                 }
 
@@ -95,7 +100,6 @@ export default {
                     font-size: 16px;
                     color: white;
                     color: #fcee0a;
-                    // font-family: 'ZCOOL XiaoWei', serif;
                     font-family: 'ZCOOL QingKe HuangYou', cursive;
                     letter-spacing: 2px;
                 }
