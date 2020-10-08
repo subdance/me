@@ -67,6 +67,11 @@ export default {
         this.article = articleData;
         this.isCoverShow = !this.$route.params.name;
     },
+    watch: {
+      $route(to) {
+        this.isCoverShow = !to.params.name;
+      }
+    },
     computed: {
       showingIndex () {
         const name = this.$route.params.name;
