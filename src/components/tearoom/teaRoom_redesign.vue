@@ -7,7 +7,7 @@
                     :key="index"
                     class="title-holder"
                     :class="{'showing-title': index == showingIndex}"
-                    @click="toggleArticle(index)"
+                    @click="toggleArticle(item.route)"
                     >
                     <p 
                         class="title-text" 
@@ -21,7 +21,7 @@
                 <div
                     v-show="!isCoverShow"
                     class="title-holder"
-                    @click="toCover"
+                    @click="toggleArticle()"
                     >
                     <span class="switch-text">
                         合上书
@@ -30,42 +30,22 @@
                 </div>
             </div>
             <div class="content-wrapper">
-                <transition name="el-fade-in">
-                    <div
-                        v-show="isCoverShow"
-                        class="cover-holder"
-                        @click="toggleArticle(0)"
-                        >
-                        <div class="cover-text-holder">
-                            极东<br />乐<br />园笔记
-                        </div>
-                    </div>
-                </transition>
-                <transition name="el-fade-in">
-                    <div 
-                        class="content-holder"
-                        v-if="visibleController && !isCoverShow"
-                        >
-                        <p>
-                            <span class="para-title">{{articleInShow.title}}</span>
-                            <span class="para-intro">{{articleInShow.intro}}</span>
-                        </p>
-                        <p
-                            v-for="(item, index) in articleInShow.para"
-                            :key="index"
-                            class="paragraph"
-                            :class="{'quote': _richTextChecker(index) == 'quote', 'special': _richTextChecker(index) == 'special'}"
-                            >
-                            <span v-if="!_richTextChecker(index)">{{item.slice(0, 1)}}</span>
-                            <span v-if="!_imgChecker(index)">{{item.slice(1)}}</span>
-                            <img :src=item.slice(1) v-if="_imgChecker(index)" class="article-img"> 
-                        </p>
-                    </div>
-                </transition>
+              <div
+                v-show="isCoverShow"
+                class="cover-holder"
+                @click="toggleArticle('kon-eternal')"
+                >
+                <div class="cover-text-holder">
+                    极东<br />乐<br />园笔记
+                </div>
+              </div>
+              <transition name="el-fade-in">
+                <div v-if="isRoutingShowing">
+                  <router-view></router-view>
+                </div>
+              </transition>
             </div>
-            <div class="title-wrapper">
-
-            </div>
+            <div class="title-wrapper" />
         </div>
     </div>
 </template>
@@ -79,57 +59,35 @@ export default {
             visibleController: false,
             statusController: null,
             articleInShow: null,
-            showingIndex: null,
-            article: []
+            article: [],
+            isRoutingShowing: true,
         }
     },
     created() {
-        this.generateStausController();
         this.article = articleData;
+        this.isCoverShow = !this.$route.params.name;
+    },
+    computed: {
+      showingIndex () {
+        const name = this.$route.params.name;
+        if (!name) return 'xx';
+        return this.article.map(item => item.route).indexOf(name);
+      },
     },
     methods: {
-        _richTextChecker(index) {
-            switch (this.articleInShow.para[index][0]) {
-                case '~': {
-                    return 'quote';
-                    break;
-                }
-                case '@': {
-                    // this.$set(this.articleInShow.para, index, this.articleInShow.para[index].slice(1))
-                    return 'special';
-                    break;
-                }
-                case '!': {
-                    return 'image';
-                    break;
-                }
-                default: {
-                    return false;
-                    break;
-                }
-            }
-        },
-        _imgChecker(index) {
-            return this.articleInShow.para[index][0] === '!';
-        },
-        generateStausController() {
-            let controllerSum = this.article.length;
-            this.statusController = [...new Array(controllerSum).fill(false)];
-        },
-        toCover() {
-            this.showingIndex = null;
+        toggleArticle(route) {
+          if (!route)  {
             this.isCoverShow = true;
-        },
-        toggleArticle(index) {
-            if (this.showingIndex == index) return;
-            this.showingIndex = index;
-            this.isCoverShow = false;
-            this.visibleController = false;
-            this.articleInShow = {};
-            setTimeout(() => {
-                this.articleInShow = {...this.article[index]};
-                this.visibleController = true;
-            }, 300)
+            this.$router.push('/');
+            return;
+          }
+          this.isCoverShow = false;
+          this.isRoutingShowing = false;
+          this.$router.push(`/post/${route}`)
+          .then(() => {
+            setTimeout(() => {this.isRoutingShowing = true}), 1000}
+          )
+          .catch(err => {})
         }
     }
 }
@@ -240,52 +198,5 @@ export default {
         font-family: 'ZCOOL XiaoWei', serif;
         text-orientation: upright;
         writing-mode: vertical-rl;
-    }
-    .paragraph {
-        line-height: 20px;
-        font-size: 16px;
-        margin-bottom: 12px;
-        font-family: 'Noto Serif SC', serif;
-        color: #303133;
-    }
-    .para-title {
-        font-size: 30px;
-        line-height: 3px;
-        padding-left: 20px;
-        font-family: 'ZCOOL XiaoWei', serif;
-    }
-    .para-intro {
-        text-align: right;
-        display: block;
-        font-size: 12px;
-        font-style: italic;
-        color: #909399;
-        margin-bottom: 10px;
-    }
-    .quote {
-        font-size: 16px;
-        color: #909399;
-        border-left: 2px solid #909399;
-        padding: 10px 10px;
-        padding-bottom: 15px;
-        /* font-family: 'Times New Roman', Times, serif; */
-        font-family: 'Noto Serif SC', serif;
-        line-height: 20px;
-    }
-    .special {
-        font-style: italic;
-        font-weight: bold;
-    }
-    .article-img {
-        width: 400px;
-        margin: auto;
-        display: block;
-        /* border-radius: 15px; */
-        margin-top: 15px;
-        margin-bottom: 15px;
-        border: 10px solid white;
-    }
-    .paragraph::first-letter {
-        padding-left: 20px;
     }
 </style>
