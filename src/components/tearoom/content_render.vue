@@ -70,7 +70,7 @@ export default {
         padding: 10px 10px;
         padding-bottom: 15px;
         font-family: 'Noto Serif SC', serif;
-        line-height: 20px;
+        line-height: 22px;
     }
     .special {
         font-style: italic;
