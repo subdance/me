@@ -1,25 +1,24 @@
 <template>
     <el-container>
         <div>
-            <aplayer
+            <!-- <aplayer
                 ref='aplayer'
                 :audio="moePlayer.audio2"
                 :volume='moePlayer.volume'
                 :fixed="true"
-                />
+                :autoplay="false"
+                /> -->
         </div>
         <el-main>
-            <router-view/>
+            <transition name="el-fade-in">
+                <router-view/>
+            </transition>
         </el-main>
     </el-container>
 </template>
 
 <script>
-import toTop from "@/components/global/global_backToTop.vue"
 export default {
-    components: {
-        toTop
-    },
     data(){
         return {
             moePlayer: {

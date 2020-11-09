@@ -36,12 +36,12 @@ export default {
                     alt: "mail me",
                     isRouter: false
                 },
-                {
-                    link: "/projects",
-                    icon: "fa fa-file fa-1x",
-                    alt: "my projects",
-                    isRouter: true
-                }
+                // {
+                //     link: "/projects",
+                //     icon: "fa fa-file fa-1x",
+                //     alt: "my projects",
+                //     isRouter: true
+                // }
             ]
         }
     }
