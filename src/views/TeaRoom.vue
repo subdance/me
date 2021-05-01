@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import teaRoom from '@/components/tearoom/teaRoom_redesign.vue'
-import teaRoomRes from '@/components/tearoom/teaRoom_responsive.vue'
+import teaRoom from '@/components/tearoom/teaRoom_desktop.vue'
+import teaRoomRes from '@/components/tearoom/teaRoom_mobile.vue'
 import sns from '@/components/tearoom/sns.vue'
 export default {
     components: {
